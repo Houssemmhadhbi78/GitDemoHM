@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>qaclickacademy</groupId>
+	<artifactId>Mavenjava</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Mavenjava</name>
+	<!-- FIXME change it to the project's website -->
+	<url>http://www.example.com</url>
+
+	<profiles>
+		<profile> <!-- Note this commande in CMD for execution : "mvn test -PRegression -->
+			<id>Regression</id>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!--This plugin will help us to execute all test cas in "src/test/java" -->
+						<!-- Best practice is to define the version of the Surefire Plugin 
+							that you want to use in either your pom.xml or a parent pom.xml: -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.0.0-M5</version>
+
+							<!--This configuration is to add to this pluin in order to execute 
+								from "testng.xml" -->
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile> testng2.xml </suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+
+		</profile>
+
+		<profile><!-- Note this commande in CMD for execution : "mvn test -Psmoke -->
+			<id>smoke</id>
+
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!--This plugin will help us to execute all test cases in folder "src/test/java" -->
+						<!-- Best practice is to define the version of the Surefire Plugin 
+							that you want to use in either your pom.xml or a parent pom.xml: -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<version>3.0.0-M5</version>
+
+							<!--This configuration is to add to this pluin in order to execute 
+								from "testng.xml" -->
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile> testng.xml </suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.8</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>4.3.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>7.4.1</version>
+		</dependency>
+
+	</dependencies>
+
+
+</project>
